@@ -1,32 +1,40 @@
 // Redirect Whatsapp
-function sendMessage() {
+function sendMessageToWhatsapp(event) {
+  event.preventDefault(); // ⛔ Mencegah reload halaman
+
   const name = document.getElementById('name').value;
-  const phone = document.getElementById('phone').value;
   const email = document.getElementById('email').value;
+  const phone = document.getElementById('phone').value;
+  const subject = document.getElementById('subject').value;
   const message = document.getElementById('message').value;
 
-  const whatsappMessage = `Hallo Admin, Nama Saya : ${name}. Nomor Saya : ${phone}. Email Saya : ${email}. ${message}`;
-  const whatsappNumber = '6281540921193'; // Replace with your WhatsApp number
-  const whatsappUrl = `https://wa.me/${6281540921193}?text=${encodeURIComponent(whatsappMessage)}`;
+  const text = `Hallo Admin, \nNama Saya : ${name}. \nEmail Saya : ${email}. \nNomor Saya : ${phone}. \nSubject Saya : ${subject}. \nPesan Saya : ${message}`;
+  // const text = `Halo, saya ${name},\nEmail: ${email}\nTelepon: ${phone}\nPesan: ${message}`;
+  // const encodedText = encodeURIComponent(text);
+  // const url = `https://wa.me/${6281540921193}?text=${encodeURIComponent(whatsappMessage)}`;
+  // const url = `https://wa.me/6281540921193?text=${encodedText}`;
+  const encodedText = encodeURIComponent(text);
+  const url = `https://wa.me/6281540921193?text=${encodedText}`;
 
-  window.open(whatsappUrl, '_blank');
+  window.open(url, '_blank');
+  return false; // mencegah form submit
 }
 // Redirect Whatsapp
 
 // Redirect Whatsapp
-document.getElementById('contact-panel__form').addEventListener('submit', function (e) {
-  e.preventDefault(); // Cegah submit default
+// function sendMessageToWhatsApp(event) {
+//   event.preventDefault();
 
-  const name = document.getElementById('name').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const message = document.getElementById('message').value.trim();
+//   const name = document.getElementById('name').value;
+//   const email = document.getElementById('email').value;
+//   const phone = document.getElementById('phone').value;
+//   const subject = document.getElementById('subject').value;
+//   const message = document.getElementById('message').value;
 
-  const phone = '6281234567890'; // Ganti dengan nomor WhatsApp tujuan
-  const text = `Halo, saya ${name} (${email}).\nPesan: ${message}`;
+//   const text = `Hallo Admin, \nNama Saya : ${name} \nEmail : ${email} \nNomor : ${phone} \nSubjek : ${subject} \nPesan : ${message}`;
+//   const url = `https://wa.me/6281540921193?text=${encodeURIComponent(text)}`;
 
-  const encodedText = encodeURIComponent(text);
-  const whatsappURL = `https://wa.me/${6281540921193}?text=${encodeURIComponent(whatsappMessage)}`;
-
-  window.open(whatsappURL, '_blank'); // Buka WhatsApp di tab baru
-});
+//   window.open(url, '_blank');
+//   return false;
+// }
 // Redirect Whatsapp
