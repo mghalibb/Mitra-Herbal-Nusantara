@@ -266,6 +266,7 @@ $(function () {
     focusOnSelect: true,
     infinite: false,
   });
+  /*==========   Slick Carousel ==========*/
 
   /*==========  Popup Video  ==========*/
   $('.popup-video').magnificPopup({
@@ -325,3 +326,26 @@ $(function () {
 /*==========  Pagination Area  ==========*/
 
 /*==========  Pagination Area  ==========*/
+
+/*==========   Testimonial Slick Carousel ==========*/
+const items = document.querySelectorAll('.testimonis-item');
+const dots = document.querySelectorAll('.carousel-dots span');
+let index = 0;
+
+function showItem(i) {
+  items.forEach((item, idx) => {
+    item.classList.toggle('active', idx === i);
+    dots[idx].classList.toggle('active', idx === i);
+  });
+  index = i;
+}
+
+dots.forEach((dot, i) => {
+  dot.addEventListener('click', () => showItem(i));
+});
+
+setInterval(() => {
+  let nextIndex = (index + 1) % items.length;
+  showItem(nextIndex);
+}, 4000);
+/*==========   Testimonial Slick Carousel ==========*/
